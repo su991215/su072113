@@ -23,7 +23,7 @@
               style="margin-right: 5px"
               v-for="attrVal in row.attrValueList"
               :key="attrVal.id"
-              >{{ attrVal.valueName }}</el-tag
+              >{{ attrVal.valueName }}</el-tag  
             >
           </template>
         </el-table-column>
@@ -88,19 +88,19 @@
           </template>
         </el-table-column>
         <el-table-column label="操作">
-          <template v-solt="{row,$index}">
-
+          <template v-solt="{ row, $index }">
             <el-popconfirm
-            @onConfirm="delAttrValue($index)"
-            :title="`确定删除 ${row.valueName} 吗？`"
-            ><el-button
-              type="danger"
-              icon="el-icon-delete"
-              size="mini"
-              slot="reference"
-              v-loading.fullscreen.lock="fullscreenLoading"
-              @click="openFullScreen1"
-            ></el-button>
+              @onConfirm="delAttrValue($index)"
+              :title="`确定删除 ${row.valueName} 吗？`"
+              ><el-button
+                type="danger"
+                icon="el-icon-delete"
+                size="mini"
+                slot="reference"
+                v-loading.fullscreen.lock="fullscreenLoading"
+                @click="openFullScreen1"
+              ></el-button>
+            </el-popconfirm>
           </template>
         </el-table-column>
       </el-table>
@@ -125,7 +125,7 @@
 //   id:18904
 //   valueName:"5.0~5.49英寸"
 
-import Category from "./category";
+import Category from "@/components/Category";
 export default {
   name: "AttrList",
   data() {
@@ -142,7 +142,7 @@ export default {
   },
   methods: {
     editCompleted(row, index) {
-      if (!rou.valueName) {
+      if (!row.valueName) {
         this.attr.attrValueList.splice(index, 1);
         return;
       }
